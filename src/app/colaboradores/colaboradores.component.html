@@ -1,0 +1,18 @@
+<div class="boton-container">
+    <button (click)="obtenerUsuarios()" class="listar-boton">
+        Listar todos los usuarios
+    </button>
+</div>
+<div class="listar-container">
+    <div *ngIf="users.length > 0">
+        <div *ngFor="let user of users; trackBy: trackByUserId">
+            <h2 (click)="changeName(user.name)">Nombre del usuario: {{user.name}}</h2>
+            <p>Username del usuario: {{user.username}}</p>
+            <p>Email del usuario: {{user.email}}</p>
+            <p>Contacto del usuario: {{user.phone}}</p>
+        </div>
+    </div>
+    <div *ngIf="users.length === 0">
+        <h2>No hay usuarios</h2>
+    </div>
+</div>

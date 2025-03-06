@@ -1,0 +1,18 @@
+<div class="usuario-container">
+   <div class="centrado-negrita">
+        Datos del usuario {{usuario.name}}:       
+    </div>
+    <img (click) = "mostrardatos()" class="imagen-perfil" alt="photo" [src]="foto" />
+    
+</div>
+<div class="datos-container">
+    @if (mostrardata) {
+        <p> <strong>Nombre: </strong>  {{usuario.name}}</p>
+        <p> <strong>Usuario: </strong> {{usuario.username}}</p>
+        <p> <strong>Email: </strong> {{usuario.email}}</p>
+        <p> <strong>Contacto: </strong> {{usuario.phone}}</p>
+    }     
+ </div>
+ <app-colaboradores (changeNameEvent)="getName($event)"></app-colaboradores>
+ <app-login></app-login>
+ 
