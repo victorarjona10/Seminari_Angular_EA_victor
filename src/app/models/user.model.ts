@@ -5,4 +5,9 @@ export interface User {
     email: string;
     phone: string;
   }
+export class User implements User {
+    constructor(     
+      
+    ) {}
+}
   

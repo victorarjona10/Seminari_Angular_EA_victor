@@ -9,7 +9,7 @@ import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-usuario',
-  imports: [CommonModule, ColaboradoresComponent, LoginComponent],
+  imports: [CommonModule, ColaboradoresComponent],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css',
   standalone: true
@@ -18,6 +18,7 @@ export class UsuarioComponent {
 
   foto: string;
   mostrardata: boolean;
+  
   usuario: User = {
     id: 1,
     name: "Toni",

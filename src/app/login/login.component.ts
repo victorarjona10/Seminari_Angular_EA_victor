@@ -15,6 +15,7 @@ export class LoginComponent {
   formularioLogin: FormGroup;
   authService = inject(AuthService);
   @Output() loggedin = new EventEmitter<string>();
+  @Output() exportLoggedIn = new EventEmitter<boolean>();
 
   constructor(private form: FormBuilder){
     this.formularioLogin = this.form.group({
@@ -39,6 +40,8 @@ export class LoginComponent {
       next: (response) => {
         console.log('Login exitoso:', response);
         alert('Inicio de sesión exitoso');
+        this.exportLoggedIn.emit(true);
+      
       },
       error: (error) => {
         console.error('Error en el login:', error);

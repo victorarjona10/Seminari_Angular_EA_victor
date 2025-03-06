@@ -13,6 +13,8 @@
         <p> <strong>Contacto: </strong> {{usuario.phone}}</p>
     }     
  </div>
- <app-colaboradores (changeNameEvent)="getName($event)"></app-colaboradores>
- <app-login></app-login>
+ <app-colaboradores 
+    (changeNameEvent)="getName($event)" 
+    [usuario]="usuario"></app-colaboradores>
+
  

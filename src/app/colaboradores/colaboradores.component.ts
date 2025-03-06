@@ -16,6 +16,8 @@ export class ColaboradoresComponent {
   users: User [];
   nom: string;
 
+  @Input() usuario: User = new User();
+
   constructor() {
     this.users = [];
     this.nom = 'Toni';
@@ -25,15 +27,18 @@ export class ColaboradoresComponent {
   userService = inject(UserService);
 
   async obtenerUsuarios() {
-    try {
-      const users = await firstValueFrom(this.userService.getUsers()); //firstValueFrom para convertir el Observable devuelto por getUsers en una Promise y luego usamos await para esperar a que la Promise se resuelva
-      this.users = users || []; // Asegúrate de que siempre se asigne un array
-      console.log(this.users); // Puedes ver los datos en la consola
-    } catch (error) {
-      console.error('Error al obtener usuarios:', error);
-      this.users = []; // Asigna un array vacío en caso de error
+
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+      },
+      error: (error) => {
+        console.error('Error al obtener usuarios:', error);
+      }
+    });     
+    this.users.push(this.usuario);
+    console.log(this.users); // Puedes ver los datos en la consola
     }
-  }
 
   trackByUserId(index: number, user: any): number {
     return user.id;
@@ -42,6 +47,11 @@ export class ColaboradoresComponent {
   @Output() changeNameEvent = new EventEmitter<string>();
   changeName(Name: string){
     this.changeNameEvent.emit(Name);
+  }
+
+  deleteUser(i: number) {
+    console.log("delete User ",i);
+    this.users.splice(i, 1);
   }
 
 }

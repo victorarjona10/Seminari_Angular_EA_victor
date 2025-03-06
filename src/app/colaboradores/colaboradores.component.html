@@ -5,11 +5,12 @@
 </div>
 <div class="listar-container">
     <div *ngIf="users.length > 0">
-        <div *ngFor="let user of users; trackBy: trackByUserId">
+        <div *ngFor="let user of users; let i = index; trackBy: trackByUserId">
             <h2 (click)="changeName(user.name)">Nombre del usuario: {{user.name}}</h2>
             <p>Username del usuario: {{user.username}}</p>
             <p>Email del usuario: {{user.email}}</p>
             <p>Contacto del usuario: {{user.phone}}</p>
+            <p><a (click)="deleteUser(i)">X</a></p>
         </div>
     </div>
     <div *ngIf="users.length === 0">
