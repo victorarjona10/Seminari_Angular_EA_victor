@@ -7,10 +7,11 @@
     <div *ngIf="users.length > 0">
         <div *ngFor="let user of users; let i = index; trackBy: trackByUserId">
             <h2 (click)="changeName(user.name)">Nombre del usuario: {{user.name}}</h2>
-            <p>Username del usuario: {{user.username}}</p>
+            <p>Edad del usuario: {{user.age}}</p>
             <p>Email del usuario: {{user.email}}</p>
-            <p>Contacto del usuario: {{user.phone}}</p>
-            <p><a (click)="deleteUser(i)">X</a></p>
+            <button (click)="deleteUser(i)" class="listar-boton">
+                Borrar
+            </button>
         </div>
     </div>
     <div *ngIf="users.length === 0">

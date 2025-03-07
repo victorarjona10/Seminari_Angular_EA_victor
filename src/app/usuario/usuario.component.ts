@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { firstValueFrom } from 'rxjs';
 import { ColaboradoresComponent } from "../colaboradores/colaboradores.component";
@@ -22,9 +22,8 @@ export class UsuarioComponent {
   usuario: User = {
     id: 1,
     name: "Toni",
-    username: "tonioller",
+    age: 40,
     email: "toni.oller@gmail.com",
-    phone: "1234"
   };
   
   constructor() {      

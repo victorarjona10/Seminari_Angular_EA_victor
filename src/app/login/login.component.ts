@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject,EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +39,6 @@ export class LoginComponent {
     this.authService.login(loginData).subscribe({
       next: (response) => {
         console.log('Login exitoso:', response);
-        alert('Inicio de sesión exitoso');
         this.exportLoggedIn.emit(true);
       
       },
