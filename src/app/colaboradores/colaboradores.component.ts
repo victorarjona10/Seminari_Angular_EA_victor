@@ -6,17 +6,21 @@ import { firstValueFrom } from 'rxjs';
 import { Component, inject,EventEmitter, Input, Output } from '@angular/core';
 import { ConfirmDialogComponent } from '../confirmDialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { NombrePipe } from '../pipes/nombre.pipe';
+import { N } from '@angular/cdk/keycodes';
+import { OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-colaboradores',
-  imports: [CommonModule],
+  imports: [CommonModule, NombrePipe, FormsModule],
   templateUrl: './colaboradores.component.html',
   styleUrl: './colaboradores.component.css',
   standalone: true
 })
 export class ColaboradoresComponent {
   users: User [];
-
+  query = 'b';
   //Para recibir el usuario que proviene del componente usuario
   @Input() usuario: User = new User();
 
@@ -28,6 +32,8 @@ export class ColaboradoresComponent {
 
   //Para poder usar los servicios que son get de usuario/usuarios
   userService = inject(UserService);
+
+
 
   //Función que se usa cuando se hace click a listar usuarios
   async obtenerUsuarios() {

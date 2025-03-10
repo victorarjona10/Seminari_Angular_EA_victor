@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject,EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,13 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './login.component.css',
   standalone: true
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  
 
+
+
+  date: Date = new Date("2025-08-14");
+  Prova: string = "Este texto deberia estar en mayusculas";
   formularioLogin: FormGroup;
   authService = inject(AuthService);
   @Output() loggedin = new EventEmitter<string>();
@@ -23,7 +29,12 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(8)]], 
     });
   }
-
+ngOnInit(): void {
+    this.formularioLogin = this.form.group({
+      email: ['eve.holt@reqres.in', [Validators.required, Validators.email]], // Valor predeterminado para el email
+      password: ['cityslicka', [Validators.required, Validators.minLength(8)]] // Valor predeterminado para la contraseña
+    });
+  }
   hasError(controlName:string, errorType:string){
     return this.formularioLogin.get(controlName)?.hasError(errorType) && this.formularioLogin.get(controlName)?.touched;  
   }

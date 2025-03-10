@@ -4,6 +4,14 @@
     </button>
 </div>
 <div class="listar-container">
+
+    <p>
+        Escribe el filtrado de usuarios: <input type="text" [(ngModel)]="query">
+    </p>
+      
+    <pre>{{users | nombre:query | json}}</pre>
+
+
     <div *ngIf="users.length > 0">
         <div *ngFor="let user of users; let i = index; trackBy: trackByUserId">
             <h2 (click)="changeName(user.name)">Nombre del usuario: {{user.name}}</h2>

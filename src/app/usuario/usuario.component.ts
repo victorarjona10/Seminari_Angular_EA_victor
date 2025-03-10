@@ -6,10 +6,10 @@ import { User } from '../models/user.model';
 import { firstValueFrom } from 'rxjs';
 import { ColaboradoresComponent } from "../colaboradores/colaboradores.component";
 import { LoginComponent } from '../login/login.component';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-usuario',
-  imports: [CommonModule, ColaboradoresComponent],
+  imports: [CommonModule, ColaboradoresComponent, FormsModule],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css',
   standalone: true
