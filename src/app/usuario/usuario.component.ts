@@ -1,11 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
-import { firstValueFrom } from 'rxjs';
 import { ColaboradoresComponent } from "../colaboradores/colaboradores.component";
-import { LoginComponent } from '../login/login.component';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-usuario',

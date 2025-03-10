@@ -5,7 +5,7 @@ import { User } from '../models/user.model';
 })
 export class NombrePipe implements PipeTransform {
 
-  transform(value: User[], query: string): unknown {
+  transform(value: User[], query: string): User[] {
     if (query === '' || query === undefined) {
       return value;
     }

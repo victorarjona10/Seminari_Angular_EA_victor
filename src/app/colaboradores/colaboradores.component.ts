@@ -1,14 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
-import { firstValueFrom } from 'rxjs';
 import { Component, inject,EventEmitter, Input, Output } from '@angular/core';
 import { ConfirmDialogComponent } from '../confirmDialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NombrePipe } from '../pipes/nombre.pipe';
-import { N } from '@angular/cdk/keycodes';
-import { OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -24,16 +20,12 @@ export class ColaboradoresComponent {
   //Para recibir el usuario que proviene del componente usuario
   @Input() usuario: User = new User();
 
-
-
   constructor() {
     this.users = [];
   }
 
   //Para poder usar los servicios que son get de usuario/usuarios
   userService = inject(UserService);
-
-
 
   //Función que se usa cuando se hace click a listar usuarios
   async obtenerUsuarios() {
@@ -53,7 +45,7 @@ export class ColaboradoresComponent {
       }
     });
 
-    }
+  }
 
   trackByUserId(index: number, user: any): number {
     return user.id;
